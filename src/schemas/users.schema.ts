@@ -1,4 +1,4 @@
-import { pgEnum, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
+import { pgEnum, pgTable, text, timestamp, varchar } from "drizzle-orm/pg-core";
 import { generalProperties } from "./general.schema";
 
 
@@ -14,6 +14,8 @@ export const users = pgTable("users", {
 
   password: varchar("password", { length: 256 }).notNull(),
 
-  role: varchar("role",{length:255}).notNull()
+  role: varchar("role",{length:255}).notNull(),
+
+  refreshToken: varchar("refresh_token", {length: 255})
 
 });

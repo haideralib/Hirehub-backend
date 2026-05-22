@@ -1,6 +1,16 @@
 version: "3.8"
 
 services:
+  redis:
+    image: redis:7
+    container_name: hirehub_redis
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+
   postgres:
     image: postgres:16
     container_name: hirehub_postgres
@@ -16,3 +26,4 @@ services:
 
 volumes:
   pgdata:
+  redis_data:
